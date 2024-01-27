@@ -19,10 +19,7 @@ public class PauseManager : MonoBehaviour
             isPaused = !isPaused;
             pauseAnimator.SetTrigger("Pause");
         }
-        if (!isWin)
-        {
-            Time.timeScale = (isPaused) ? 0 : 1;
-        }
+        Time.timeScale = (isPaused) ? 0 : 1;
     }
     public void Win()
     {

@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
     private void Awake()
     {
         instances = this;
+        PauseManager.isPaused = false;
     }
     private void Start()
     {

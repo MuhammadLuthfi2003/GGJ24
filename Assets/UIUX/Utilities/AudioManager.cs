@@ -60,6 +60,18 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+        if (sound.output.name == "SFX")
+        {
+            activeSFX = sound;
+        }
+        if (sound.output.name == "Music")
+        {
+            if (activeMusic != null)
+            {
+                Stop(activeMusic.name);
+            }
+            activeMusic = sound;
+        }
         Debug.Log("playing " + name);
         sound.source.Play();
     }
