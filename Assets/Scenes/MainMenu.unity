@@ -3474,6 +3474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4152cc2513707064bb2b5d884adbf813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneMusicList:
+  - sceneName: MainMenu
+    musicName: Music1
   sounds:
   - name: Music1
     clip: {fileID: 8300000, guid: 4326934e55892f74f86b5701aa84972a, type: 3}

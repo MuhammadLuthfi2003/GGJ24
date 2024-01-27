@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
     }
     public void Win()
     {
-        isPaused = !isPaused;
+        isPaused = !isPaused;   
         pauseAnimator.SetTrigger("Win");
     }
 }

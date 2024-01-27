@@ -2,10 +2,11 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
+    public List<SceneLoadMusic> sceneMusicList;
     public Sound[] sounds;
     public static AudioManager instance;
     Sound activeMusic;
@@ -39,7 +40,14 @@ public class AudioManager : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        Debug.Log("loaded scene: " + scene.name);
+        foreach (SceneLoadMusic item in sceneMusicList)
+        {
+            if (scene.name == item.sceneName)
+            {
+                item.PlayMusic();
+            }
+        }
     }
     void OnDisable()
     {
@@ -93,5 +101,15 @@ public class AudioManager : MonoBehaviour
     public void SetMusicVolume(float value)
     {
         activeMusic.output.audioMixer.SetFloat("MusicVolume", AudioSetting.currentMusicValue-(value));
+    }
+}
+[System.Serializable]
+public class SceneLoadMusic
+{
+    public string sceneName;
+    public string musicName;
+    public void PlayMusic()
+    {
+        AudioManager.instance.Play(musicName);
     }
 }
