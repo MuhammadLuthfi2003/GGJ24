@@ -86,9 +86,12 @@ public class Powerup : MonoBehaviour
 
                         break;
                 }
-                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<SpriteRenderer>().color = new Color32(0,0,0,0);
                 if (GetComponent<Collider2D>() != null)
-                    GetComponent<Collider2D>().enabled = false;
+            {
+                GetComponent<Collider2D>().enabled = false;
+            }
+
 
                 StartCoroutine(turnBackNormal());
 

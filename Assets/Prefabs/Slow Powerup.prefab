@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   duration: 5
-  value: 2
+  value: 3
   isTaken: 0
 --- !u!58 &6556823857017977091
 CircleCollider2D:
