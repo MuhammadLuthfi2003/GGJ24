@@ -85,13 +85,13 @@ public class Powerup : MonoBehaviour
                         //    player.gameObject.transform.localScale -= new Vector3(value, value, 0);
                         //}
                         defaultvalue = ball.gameObject.transform.localScale.x;
-                        ball.gameObject.transform.localScale -= new Vector3(value, value, 0);
+                        ball.gameObject.transform.localScale = new Vector3(value, value, 0);
                         break;
                     case powerupType.Popup:
 
                         break;
                 }
-                GetComponent<SpriteRenderer>().color = new Color32(0,0,0,0);
+                transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 if (GetComponent<Collider2D>() != null)
             {
                 GetComponent<Collider2D>().enabled = false;

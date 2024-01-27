@@ -28,6 +28,12 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (rb.velocity.x < 0.1 || rb.velocity.y < 0.1)
+        //{
+        //    rb.velocity = new Vector2(0.15f, 0.15f);
+        //}
+        
+
         if ((rb.velocity.x < minSpeedToMove || rb.velocity.y < minSpeedToMove) && !shouldMoveAutomatically && !isHit)
         {
             shouldMoveAutomatically = true;
@@ -85,7 +91,7 @@ public class Ball : MonoBehaviour
             {
                 isHit = true;
                 StartCoroutine(deleteHit());
-                //rb.velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+                rb.velocity = rb.velocity + collision.gameObject.GetComponent<Rigidbody2D>().velocity;
                 t = 0;
             }
             else
