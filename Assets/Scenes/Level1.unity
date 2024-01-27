@@ -447,24 +447,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &151123176 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3717605700643922958, guid: f17609a9455675246865e652b5a15de6, type: 3}
-  m_PrefabInstance: {fileID: 2627235360220251782}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &151123179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151123176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf17180c2670dc940874e14d53bbe725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseAnimator: {fileID: 127829158}
 --- !u!1001 &271139416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2015,6 +1997,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1055334373639578629, guid: f17609a9455675246865e652b5a15de6, type: 3}
+      propertyPath: pauseAnimator
+      value: 
+      objectReference: {fileID: 127829158}
     - target: {fileID: 3108354963723671946, guid: f17609a9455675246865e652b5a15de6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.8573685
@@ -2066,10 +2052,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3717605700643922958, guid: f17609a9455675246865e652b5a15de6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 151123179}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f17609a9455675246865e652b5a15de6, type: 3}
 --- !u!1001 &2724206800210371952
 PrefabInstance:
