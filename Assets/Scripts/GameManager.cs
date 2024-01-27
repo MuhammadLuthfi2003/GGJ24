@@ -48,6 +48,12 @@ public class GameManager : MonoBehaviour
     IEnumerator DepletePowerup(Powerup powerup)
     {
         yield return new WaitForSeconds(lifetime);
-        Destroy(powerup.gameObject);
+        if (powerup != null)
+        {
+            if (!powerup.isTaken)
+            {
+                Destroy(powerup.gameObject);
+            }
+        }
     }
 }

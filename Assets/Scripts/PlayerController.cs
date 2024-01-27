@@ -22,11 +22,13 @@ public class PlayerController : MonoBehaviour
 
     private Bounds movementBounds;
     private Vector2 previousPosition;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         top = new Vector2(PlayArea.bounds.center.x, PlayArea.bounds.max.y);
         bottom = new Vector2(PlayArea.bounds.center.x, PlayArea.bounds.min.y);
         left = new Vector2(PlayArea.bounds.min.x, PlayArea.bounds.center.y);
@@ -47,21 +49,34 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = 0f;
         float verticalInput = 0f;
 
-        if (Input.GetKey(leftKey))
-            horizontalInput = -1f;
-        rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
+        if (Input.anyKey)
+        {
+            if (Input.GetKey(leftKey))
+                horizontalInput = -1f;
+                anim.SetFloat("SpeedX", horizontalInput);
+            rb.velocity = new Vector2(horizontalInput,0) * speed * 2;
 
-        if (Input.GetKey(rightKey))
-            horizontalInput = 1f;
-        rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
+            if (Input.GetKey(rightKey))
+                horizontalInput = 1f;
+            anim.SetFloat("SpeedX", horizontalInput);
+            rb.velocity = new Vector2(horizontalInput,0 ) * speed * 2;
 
-        if (Input.GetKey(downKey))
-            verticalInput = -1f;
-        rb.velocity = new Vector2(0, verticalInput) * speed;
+            if (Input.GetKey(downKey))
+                verticalInput = -1f;
+            anim.SetFloat("SpeedY", verticalInput);
+            rb.velocity = new Vector2(0, verticalInput) * speed / 3;
 
-        if (Input.GetKey(upKey))
-            verticalInput = 1f;
-        rb.velocity = new Vector2(0, verticalInput) * speed;
+            if (Input.GetKey(upKey))
+                verticalInput = 1f;
+            anim.SetFloat("SpeedY", verticalInput);
+            rb.velocity = new Vector2(0, verticalInput) * speed / 3;
+        }
+        else
+        {
+            anim.SetFloat("SpeedX", 0);
+            anim.SetFloat("SpeedY", 0);
+        }
+
 
         // Calculate the new position based on player input
         Vector2 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0f) * speed * Time.deltaTime;
