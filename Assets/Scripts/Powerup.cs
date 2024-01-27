@@ -46,7 +46,8 @@ public class Powerup : MonoBehaviour
                 {
                     case powerupType.Slow:
                         players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
-                        foreach (PlayerController player in players)
+                        AudioManager.instance.Play("ta-da");
+                    foreach (PlayerController player in players)
                         {
                             defaultvalue = player.speed;
                             player.speed /= value;
@@ -54,6 +55,7 @@ public class Powerup : MonoBehaviour
                         break;
                     case powerupType.Fast:
                         players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
+                        AudioManager.instance.Play("Nitro");
                         foreach (PlayerController player in players)
                         {
                             defaultvalue = player.speed;
@@ -62,16 +64,19 @@ public class Powerup : MonoBehaviour
                         break;
                     case powerupType.Big:
                         ball = GameObject.FindObjectOfType<Ball>();
-                        //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
-                        //foreach (PlayerController player in players)
-                        //{
-                        //    defaultvalue = player.gameObject.transform.localScale.x;
-                        //    player.gameObject.transform.localScale += new Vector3(value, value, 0);
-                        //}
-                        defaultvalue = ball.gameObject.transform.localScale.x;
+                        AudioManager.instance.Play("Danger");
+
+                    //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
+                    //foreach (PlayerController player in players)
+                    //{
+                    //    defaultvalue = player.gameObject.transform.localScale.x;
+                    //    player.gameObject.transform.localScale += new Vector3(value, value, 0);
+                    //}
+                    defaultvalue = ball.gameObject.transform.localScale.x;
                         ball.gameObject.transform.localScale += new Vector3(value, value, 0);
                         break;
                     case powerupType.Small:
+                        AudioManager.instance.Play("Small");
                         ball = GameObject.FindObjectOfType<Ball>();
                         //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
                         //foreach (PlayerController player in players)

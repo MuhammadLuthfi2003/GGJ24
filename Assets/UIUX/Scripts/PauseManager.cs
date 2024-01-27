@@ -6,9 +6,11 @@ public class PauseManager : MonoBehaviour
 {
     [SerializeField] Animator pauseAnimator;
     public static bool isPaused;
+    public static bool isWin;
     private void Start()
     {
         isPaused = false;
+        isWin = false;
     }
     private void Update()
     {
@@ -17,11 +19,16 @@ public class PauseManager : MonoBehaviour
             isPaused = !isPaused;
             pauseAnimator.SetTrigger("Pause");
         }
-        Time.timeScale = (isPaused) ? 0 : 1;
+        if (!isWin)
+        {
+            Time.timeScale = (isPaused) ? 0 : 1;
+        }
     }
     public void Win()
     {
-        isPaused = !isPaused;   
+        isPaused = !isPaused;
+        isWin = true;
+        AudioManager.instance.Play("Win");
         pauseAnimator.SetTrigger("Win");
     }
 }
