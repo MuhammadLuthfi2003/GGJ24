@@ -77,6 +77,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Audio Effect
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             if (!isHit)
