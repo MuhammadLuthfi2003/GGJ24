@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -14,22 +15,15 @@ public class MainMenuManager : MonoBehaviour
     }
     private void Start()
     {
-
+        Button[] buttons = FindObjectsOfType<Button>();
+        foreach (Button button in buttons)
+        {
+            button.onClick.AddListener(() => AudioManager.instance.Play("Button")); 
+        }
     }
     private void Update()
     {
-        //if (Input.GetKey(KeyCode.Alpha1))
-        //{
-        //    MoveGroupObjects(MenuObjects[0]);
-        //}
-        //if (Input.GetKey(KeyCode.Alpha2))
-        //{
-        //    MoveGroupObjects(MenuObjects[1]);
-        //}
-        //if (Input.GetKey(KeyCode.Alpha3))
-        //{
-        //    MoveGroupObjects(MenuObjects[2]);
-        //}
+
     }
     public void MoveGroupObjects(int index)
     {

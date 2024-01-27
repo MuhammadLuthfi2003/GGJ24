@@ -15,20 +15,20 @@ public class AudioSetting : MonoBehaviour
     public static float currentSFXValue;
     void Awake()
     {
-        SetAudioVolume(musicSlider,SoundType.Music,currentMusicValue);
-        SetAudioVolume(sfxSlider,SoundType.SFX, currentSFXValue);
+        SetAudioVolume(musicSlider,SoundType.MusicVol,currentMusicValue);
+        SetAudioVolume(sfxSlider,SoundType.SFXVol, currentSFXValue);
     }
     public void SetMusicVolume()
     {
         float value = musicSlider.value;
         currentMusicValue = AudioVolume(value);
-        audioMixer.SetFloat("MusicVolume", AudioVolume(value));
+        audioMixer.SetFloat("MusicVol", AudioVolume(value));
     }
     public void SetSFXVolume()
     {
         float value = sfxSlider.value;
         currentSFXValue = AudioVolume(value);
-        audioMixer.SetFloat("SFXVolume", AudioVolume(value));
+        audioMixer.SetFloat("SFXVol", AudioVolume(value));
     }
     public void IncreaseVolume(string soundType)
     {
@@ -70,7 +70,7 @@ public class AudioSetting : MonoBehaviour
         return Mathf.Clamp(volume,minAudioVolume,maxAudioVolume);
     }
     [System.Serializable] public enum SoundType{
-        Music, SFX
+        MusicVol, SFXVol, MusicPitch, SFXPitch
     }
     float AbsoluteMinimum => Mathf.Abs(minAudioVolume);
 }

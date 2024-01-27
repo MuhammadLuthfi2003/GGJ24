@@ -40,12 +40,11 @@ public class AudioManager : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("loaded scene: " + scene.name);
         foreach (SceneLoadMusic item in sceneMusicList)
         {
             if (scene.name == item.sceneName)
             {
-                item.PlayMusic();
+                Play(item.musicName);
             }
         }
     }
@@ -61,23 +60,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        // Debug.Log($"playing {sound.clip} name {sound.name} output {sound.output.name}");
-        if (sound.output.name == "SFX")
-        {
-            // if (activeSFX != null)
-            // {
-            //     Stop(activeSFX.name);
-            // }
-            activeSFX = sound;
-        }
-        if (sound.output.name == "Music")
-        {
-            if (activeMusic != null)
-            {
-                Stop(activeMusic.name);
-            }
-            activeMusic = sound;
-        }
+        Debug.Log("playing " + name);
         sound.source.Play();
     }
     public void StopAll()
@@ -100,7 +83,7 @@ public class AudioManager : MonoBehaviour
     }
     public void SetMusicVolume(float value)
     {
-        activeMusic.output.audioMixer.SetFloat("MusicVolume", AudioSetting.currentMusicValue-(value));
+        //activeMusic.output.audioMixer.SetFloat("MusicVolume", AudioSetting.currentMusicValue-(value));
     }
 }
 [System.Serializable]
@@ -108,8 +91,4 @@ public class SceneLoadMusic
 {
     public string sceneName;
     public string musicName;
-    public void PlayMusic()
-    {
-        AudioManager.instance.Play(musicName);
-    }
 }
