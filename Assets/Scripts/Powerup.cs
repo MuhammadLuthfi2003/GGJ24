@@ -19,6 +19,7 @@ public class Powerup : MonoBehaviour
     [SerializeField] float value;
 
     private float defaultvalue;
+    public bool isTaken = false ;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +37,11 @@ public class Powerup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.gameObject.GetComponent<Ball>() != null)
+        if (collision.gameObject.GetComponent<Ball>() != null || collision.gameObject.GetComponent<PlayerController>() != null)
         {
+                isTaken = true;
                 PlayerController[] players;
+                Ball ball;
                 switch (type)
                 {
                     case powerupType.Slow:
@@ -59,26 +61,35 @@ public class Powerup : MonoBehaviour
                         }
                         break;
                     case powerupType.Big:
-                        players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
-                        foreach (PlayerController player in players)
-                        {
-                            defaultvalue = player.gameObject.transform.localScale.x;
-                            player.gameObject.transform.localScale += new Vector3(value, value, 0);
-                        }
+                        ball = GameObject.FindObjectOfType<Ball>();
+                        //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
+                        //foreach (PlayerController player in players)
+                        //{
+                        //    defaultvalue = player.gameObject.transform.localScale.x;
+                        //    player.gameObject.transform.localScale += new Vector3(value, value, 0);
+                        //}
+                        defaultvalue = ball.gameObject.transform.localScale.x;
+                        ball.gameObject.transform.localScale += new Vector3(value, value, 0);
                         break;
                     case powerupType.Small:
-                        players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
-                        foreach (PlayerController player in players)
-                        {
-                            defaultvalue = player.gameObject.transform.localScale.x;
-                            player.gameObject.transform.localScale -= new Vector3(value, value, 0);
-                        }
+                        ball = GameObject.FindObjectOfType<Ball>();
+                        //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
+                        //foreach (PlayerController player in players)
+                        //{
+                        //    defaultvalue = player.gameObject.transform.localScale.x;
+                        //    player.gameObject.transform.localScale -= new Vector3(value, value, 0);
+                        //}
+                        defaultvalue = ball.gameObject.transform.localScale.x;
+                        ball.gameObject.transform.localScale -= new Vector3(value, value, 0);
                         break;
                     case powerupType.Popup:
 
                         break;
                 }
                 GetComponent<SpriteRenderer>().enabled = false;
+                if (GetComponent<Collider2D>() != null)
+                    GetComponent<Collider2D>().enabled = false;
+
                 StartCoroutine(turnBackNormal());
 
             
@@ -89,6 +100,7 @@ public class Powerup : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         PlayerController[] players;
+        Ball ball;
         switch (type)
         {
             case powerupType.Slow:
@@ -106,18 +118,12 @@ public class Powerup : MonoBehaviour
                 }
                 break;
             case powerupType.Big:
-                players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
-                foreach (PlayerController player in players)
-                {
-                    player.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
-                }
+                ball = GameObject.FindObjectOfType<Ball>();
+                ball.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
                 break;
             case powerupType.Small:
-                players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
-                foreach (PlayerController player in players)
-                {
-                    player.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
-                }
+                ball = GameObject.FindObjectOfType<Ball>();
+                ball.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
                 break;
             case powerupType.Popup:
                 break;
