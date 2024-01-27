@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 right;
 
     private Bounds movementBounds;
+    private Vector2 previousPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
         right = new Vector2(PlayArea.bounds.max.x, PlayArea.bounds.center.y);
 
         movementBounds = PlayArea.bounds;
+        previousPosition = rb.position;
     }
 
     // Update is called once per frame
@@ -42,11 +44,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(leftKey) )
             horizontalInput = -1f;
-            rb.velocity = new Vector2(0, horizontalInput) * speed;
+            rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
 
         if (Input.GetKey(rightKey))
             horizontalInput = 1f;
-            rb.velocity = new Vector2(0, horizontalInput) * speed;
+            rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
 
         if (Input.GetKey(downKey) )
             verticalInput = -1f;
@@ -64,7 +66,36 @@ public class PlayerController : MonoBehaviour
         newPosition.y = Mathf.Clamp(newPosition.y, movementBounds.min.y, movementBounds.max.y);
 
         // Update the player's position
-        transform.position = newPosition;
+         transform.position = newPosition;
+        //rb.MovePosition(newPosition);
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        StopAllCoroutines();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        StartCoroutine(reenableRB());
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        rb.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    IEnumerator reenableRB()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 }
 

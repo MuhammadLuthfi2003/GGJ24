@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ball : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Ball : MonoBehaviour
     [SerializeField] float minSpeedToMove = 0.2f;
     [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] float timelimit = 3f;
+    public UnityEvent OnHit;
 
     private Rigidbody2D rb;
     private bool shouldMoveAutomatically = false;
@@ -97,5 +99,10 @@ public class Ball : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         isHit = false;
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnHit.Invoke();
     }
 }

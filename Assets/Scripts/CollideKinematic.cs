@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class CollideKinematic : MonoBehaviour
 {
-    public GameObject ballPrefab;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +13,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision Enter: " + collision.gameObject.name);
     }
 }
