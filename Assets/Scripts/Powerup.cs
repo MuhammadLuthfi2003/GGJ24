@@ -31,11 +31,11 @@ public class Powerup : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (gameObject.GetComponent<Ball>() != null)
         {
-              if (collision.gameObject.GetComponent<PlayerController>() != null)
+            if (collision.gameObject.GetComponent<PlayerController>() != null)
             {
                 PlayerController[] players;
                 switch (type)
@@ -76,6 +76,8 @@ public class Powerup : MonoBehaviour
 
                         break;
                 }
+                GetComponent<SpriteRenderer>().enabled = false;
+                StartCoroutine(turnBackNormal());
 
             }
         }
@@ -118,5 +120,6 @@ public class Powerup : MonoBehaviour
             case powerupType.Popup:
                 break;
         }
+        Destroy(gameObject);
     }
 }
