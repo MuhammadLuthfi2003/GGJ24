@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Powerup : MonoBehaviour
@@ -31,12 +32,13 @@ public class Powerup : MonoBehaviour
         
     }
 
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameObject.GetComponent<Ball>() != null)
+
+        if (collision.gameObject.GetComponent<Ball>() != null)
         {
-            if (collision.gameObject.GetComponent<PlayerController>() != null)
-            {
                 PlayerController[] players;
                 switch (type)
                 {
@@ -79,7 +81,7 @@ public class Powerup : MonoBehaviour
                 GetComponent<SpriteRenderer>().enabled = false;
                 StartCoroutine(turnBackNormal());
 
-            }
+            
         }
     }
 
