@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject ballPrefab;
-
-    public enum powerupType
-    {
-        Slow,
-        Fast,
-        Big,
-        Small,
-        Popup
-    }
+    public List<Powerup> powerups;
 
     // Start is called before the first frame update
     void Start()

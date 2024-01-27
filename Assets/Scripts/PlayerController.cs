@@ -39,24 +39,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetInput();
+    }
+
+    private void GetInput()
+    {
         float horizontalInput = 0f;
         float verticalInput = 0f;
 
-        if (Input.GetKey(leftKey) )
+        if (Input.GetKey(leftKey))
             horizontalInput = -1f;
-            rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
+        rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
 
         if (Input.GetKey(rightKey))
             horizontalInput = 1f;
-            rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
+        rb.velocity = new Vector2(0, horizontalInput) * speed * 2;
 
-        if (Input.GetKey(downKey) )
+        if (Input.GetKey(downKey))
             verticalInput = -1f;
-            rb.velocity = new Vector2(0, verticalInput) * speed;
+        rb.velocity = new Vector2(0, verticalInput) * speed;
 
         if (Input.GetKey(upKey))
             verticalInput = 1f;
-            rb.velocity = new Vector2(0, verticalInput) * speed;
+        rb.velocity = new Vector2(0, verticalInput) * speed;
 
         // Calculate the new position based on player input
         Vector2 newPosition = transform.position + new Vector3(horizontalInput, verticalInput, 0f) * speed * Time.deltaTime;
@@ -66,9 +71,8 @@ public class PlayerController : MonoBehaviour
         newPosition.y = Mathf.Clamp(newPosition.y, movementBounds.min.y, movementBounds.max.y);
 
         // Update the player's position
-         transform.position = newPosition;
+        transform.position = newPosition;
         //rb.MovePosition(newPosition);
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -77,9 +81,16 @@ public class PlayerController : MonoBehaviour
         StopAllCoroutines();
     }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        StopAllCoroutines();
+    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
-        StartCoroutine(reenableRB());
+        //StartCoroutine(reenableRB());
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -89,12 +100,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        rb.bodyType = RigidbodyType2D.Kinematic;
+        StartCoroutine(reenableRB());
     }
 
     IEnumerator reenableRB()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         rb.bodyType = RigidbodyType2D.Kinematic;
     }
 }
