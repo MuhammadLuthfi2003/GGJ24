@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    [SerializeField] float speed;
+    [SerializeField] public float speed;
     [SerializeField] float limit = 1.5f;
     [SerializeField] BoxCollider2D PlayArea;
 
