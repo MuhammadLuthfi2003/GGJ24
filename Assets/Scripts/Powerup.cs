@@ -55,6 +55,7 @@ public class Powerup : MonoBehaviour
                         AudioManager.instance.Play("Slime");
                     foreach (PlayerController player in players)
                         {
+                            player.isAffectedByPowerup = true;
                             defaultvalue = player.speed;
                             player.speed /= value;
                         }
@@ -64,7 +65,8 @@ public class Powerup : MonoBehaviour
                         AudioManager.instance.Play("Nitro");
                         foreach (PlayerController player in players)
                         {
-                            defaultvalue = player.speed;
+                        player.isAffectedByPowerup = true;
+                        defaultvalue = player.speed;
                             player.speed *= value;
                         }
                         break;
@@ -134,6 +136,7 @@ public class Powerup : MonoBehaviour
                 players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
                 foreach (PlayerController player in players)
                 {
+                    player.isAffectedByPowerup = false;
                     player.speed = defaultvalue;
                 }
                 break;
@@ -141,6 +144,7 @@ public class Powerup : MonoBehaviour
                 players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
                 foreach (PlayerController player in players)
                 {
+                    player.isAffectedByPowerup = false;
                     player.speed = defaultvalue;
                 }
                 break;

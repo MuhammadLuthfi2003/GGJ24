@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     private Bounds movementBounds;
     private Vector2 previousPosition;
     private Animator anim;
+    public bool isAffectedByPowerup = false;
+    private float defaultSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +38,17 @@ public class PlayerController : MonoBehaviour
 
         movementBounds = PlayArea.bounds;
         previousPosition = rb.position;
+        defaultSpeed = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!isAffectedByPowerup)
+        {
+            speed = defaultSpeed;
+        }
+
         GetInput();
     }
 
