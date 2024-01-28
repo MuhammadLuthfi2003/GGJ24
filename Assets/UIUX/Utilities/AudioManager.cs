@@ -57,7 +57,7 @@ public class AudioManager : MonoBehaviour
         Sound sound = Array.Find(sounds, sound => sound.name == name);
         if (sound == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
+            //Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
         if (sound.output.name == "SFX")
@@ -76,7 +76,7 @@ public class AudioManager : MonoBehaviour
             }
             activeMusic = sound;
         }
-        Debug.Log("playing " + name);
+        //Debug.Log("playing " + name);
         sound.source.Play();
     }
     public void StopAll()
@@ -91,10 +91,10 @@ public class AudioManager : MonoBehaviour
         Sound sound = Array.Find(sounds, sound => sound.name == name);
         if (sound == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found!");
+            //Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        Debug.LogWarning("Stopping " + name);
+        //Debug.LogWarning("Stopping " + name);
         sound.source.Stop();
     }
     public void SetMusicVolume(float value)
