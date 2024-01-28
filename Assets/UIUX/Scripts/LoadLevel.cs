@@ -9,7 +9,7 @@ public class LevelLoader : MonoBehaviour
         if (levelToLoad == "MainMenu")
         {
             PauseManager.isPaused = false;
-            PauseManager.isPaused = true;
+            PauseManager.isWin = false;
         }
         SceneManager.LoadScene(levelToLoad);
     }
