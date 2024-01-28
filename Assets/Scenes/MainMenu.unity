@@ -3120,7 +3120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6603187338675705277, guid: ee32caf5d321fbe41bcb5b089e3a9423, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: SampleScene
+      value: level2
       objectReference: {fileID: 0}
     - target: {fileID: 6721278147505140367, guid: ee32caf5d321fbe41bcb5b089e3a9423, type: 3}
       propertyPath: m_Pivot.x
@@ -5455,7 +5455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6603187338675705277, guid: ee32caf5d321fbe41bcb5b089e3a9423, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: SampleScene
+      value: level3
       objectReference: {fileID: 0}
     - target: {fileID: 6721278147505140367, guid: ee32caf5d321fbe41bcb5b089e3a9423, type: 3}
       propertyPath: m_Pivot.x
