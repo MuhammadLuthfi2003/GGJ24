@@ -108,15 +108,15 @@ public class PlayerController : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        rb.bodyType = RigidbodyType2D.Dynamic;
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    rb.bodyType = RigidbodyType2D.Dynamic;
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        StartCoroutine(reenableRB());
-    }
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    StartCoroutine(reenableRB());
+    //}
 
     IEnumerator reenableRB()
     {

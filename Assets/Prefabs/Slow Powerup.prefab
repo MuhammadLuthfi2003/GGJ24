@@ -183,9 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dbd1843e9114749a63965871af0683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 4
+  type: 0
   duration: 5
   value: 3
+  popupPrefab: {fileID: 0}
   isTaken: 0
 --- !u!58 &6556823857017977091
 CircleCollider2D:

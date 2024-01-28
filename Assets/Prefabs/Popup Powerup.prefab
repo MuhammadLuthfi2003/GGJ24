@@ -186,6 +186,7 @@ MonoBehaviour:
   type: 4
   duration: 5
   value: 2
+  popupPrefab: {fileID: 2827896292001575713, guid: b827f15870f11b146b81f71af8156f75, type: 3}
   isTaken: 0
 --- !u!58 &5434645573001037316
 CircleCollider2D:
