@@ -1878,9 +1878,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxNames:
   - Domba1
+  - Domba1
   - Domba2
   - Domba3
-  - Slime
 --- !u!1 &775306380
 GameObject:
   m_ObjectHideFlags: 0

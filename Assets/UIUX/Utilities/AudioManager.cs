@@ -62,6 +62,10 @@ public class AudioManager : MonoBehaviour
         }
         if (sound.output.name == "SFX")
         {
+            if (activeSFX != null)
+            {
+                Stop(activeSFX.name);
+            }
             activeSFX = sound;
         }
         if (sound.output.name == "Music")
