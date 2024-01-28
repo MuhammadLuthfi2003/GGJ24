@@ -17,9 +17,13 @@ public class Ball : MonoBehaviour
     private float t;
     private bool isHit = false;
 
+    public bool isAffectedByPowerup = false;
+    public float defaultSize;
+
     // Start is called before the first frame update
     void Start()
     {
+        defaultSize = transform.localScale.x;
         rb = GetComponent<Rigidbody2D>();
         t = 0;
         boxCollider = GameObject.FindGameObjectWithTag("MoveArea").GetComponent<BoxCollider2D>();
@@ -32,6 +36,11 @@ public class Ball : MonoBehaviour
         //{
         //    rb.velocity = new Vector2(0.15f, 0.15f);
         //}
+
+        if (!isAffectedByPowerup)
+        {
+            transform.localScale = new Vector3(defaultSize, defaultSize, defaultSize);
+        }
         
 
         if ((rb.velocity.x < minSpeedToMove || rb.velocity.y < minSpeedToMove) && !shouldMoveAutomatically && !isHit)

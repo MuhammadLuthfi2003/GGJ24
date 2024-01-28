@@ -68,6 +68,7 @@ public class Powerup : MonoBehaviour
                         break;
                     case powerupType.Big:
                         ball = GameObject.FindObjectOfType<Ball>();
+                        ball.isAffectedByPowerup = true;
                         AudioManager.instance.Play("Danger");
 
                     //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
@@ -82,6 +83,7 @@ public class Powerup : MonoBehaviour
                     case powerupType.Small:
                         AudioManager.instance.Play("Small");
                         ball = GameObject.FindObjectOfType<Ball>();
+                        ball.isAffectedByPowerup = true;
                         //players = GameObject.FindObjectsByType<PlayerController>(FindObjectsSortMode.None);
                         //foreach (PlayerController player in players)
                         //{
@@ -93,7 +95,8 @@ public class Powerup : MonoBehaviour
                         break;
                     case powerupType.Popup:
                         popup = Instantiate(popupPrefab, transform.position, Quaternion.identity);
-                        break;
+                    AudioManager.instance.Play("VineBoom");
+                    break;
                 }
                 transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 if (GetComponent<Collider2D>() != null)
@@ -131,14 +134,17 @@ public class Powerup : MonoBehaviour
                 break;
             case powerupType.Big:
                 ball = GameObject.FindObjectOfType<Ball>();
+                ball.isAffectedByPowerup = false;
                 ball.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
                 break;
             case powerupType.Small:
                 ball = GameObject.FindObjectOfType<Ball>();
+                ball.isAffectedByPowerup = false;
                 ball.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
                 break;
             case powerupType.Popup:
                 popup?.GetComponent<Animator>().SetTrigger("close");
+                AudioManager.instance.Play("Error");
                 break;
         }
 

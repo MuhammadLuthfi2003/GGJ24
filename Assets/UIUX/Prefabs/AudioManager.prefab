@@ -125,3 +125,17 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: VineBoom
+    clip: {fileID: 8300000, guid: c655ae396e048df4a9b7686a06efaa89, type: 3}
+    output: {fileID: 4553411407570083628, guid: 874638aa17ac27f4d9a2f885b04213a7, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Error
+    clip: {fileID: 8300000, guid: d18de596973197e45b89b70b14d4a576, type: 3}
+    output: {fileID: 4553411407570083628, guid: 874638aa17ac27f4d9a2f885b04213a7, type: 2}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
