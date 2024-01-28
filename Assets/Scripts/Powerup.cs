@@ -20,10 +20,12 @@ public class Powerup : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] float value;
     [SerializeField] GameObject popupPrefab;
+    [SerializeField] GameObject weirdSheepPrefab;
 
     private float defaultvalue;
     public bool isTaken = false;
     private GameObject popup;
+    private GameObject weirdSheep;
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +96,17 @@ public class Powerup : MonoBehaviour
                         ball.gameObject.transform.localScale = new Vector3(value, value, 0);
                         break;
                     case powerupType.Popup:
+                        int determinator = Random.Range(0, 2);
+                        if (determinator == 0)
+                    {
+                        weirdSheep = Instantiate(weirdSheepPrefab, transform.position, Quaternion.identity);
+                        duration *= 3;
+                    }
+                        else if (determinator == 1)
+                    {
                         popup = Instantiate(popupPrefab, transform.position, Quaternion.identity);
+                    }
+                        
                     AudioManager.instance.Play("VineBoom");
                     break;
                 }
@@ -143,12 +155,19 @@ public class Powerup : MonoBehaviour
                 ball.gameObject.transform.localScale = new Vector3(defaultvalue, defaultvalue, 0);
                 break;
             case powerupType.Popup:
-                popup?.GetComponent<Animator>().SetTrigger("close");
+                if (popup != null)
+                {
+                    popup.GetComponent<Animator>().SetTrigger("close");
+                }
+                if (weirdSheep != null)
+                {
+                    Destroy(weirdSheep);
+                }
                 AudioManager.instance.Play("Error");
                 break;
         }
 
-        if (type != powerupType.Popup)
+        if (type != powerupType.Popup || weirdSheep != null)
         {
             Destroy(gameObject);
         }
