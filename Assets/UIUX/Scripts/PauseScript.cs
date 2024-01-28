@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour
 {
+    public PauseManager pausedManager;
     public void Pause()
     {
-        FindObjectOfType<PauseManager>().Pause();
+        pausedManager.Pause();
     }
 }

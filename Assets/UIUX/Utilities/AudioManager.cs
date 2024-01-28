@@ -52,7 +52,7 @@ public class AudioManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    public void Play (string name)
+    public void Play (string name, float pitch = 1)
     {
         Sound sound = Array.Find(sounds, sound => sound.name == name);
         if (sound == null)
@@ -62,10 +62,10 @@ public class AudioManager : MonoBehaviour
         }
         if (sound.output.name == "SFX")
         {
-            if (activeSFX != null)
-            {
-                Stop(activeSFX.name);
-            }
+            //if (activeSFX != null)
+            //{
+            //    Stop(activeSFX.name);
+            //}
             activeSFX = sound;
         }
         if (sound.output.name == "Music")
@@ -76,7 +76,8 @@ public class AudioManager : MonoBehaviour
             }
             activeMusic = sound;
         }
-        //Debug.Log("playing " + name);
+        //Debug.Log("pitch " + pitch);
+        sound.source.pitch = pitch;
         sound.source.Play();
     }
     public void StopAll()
