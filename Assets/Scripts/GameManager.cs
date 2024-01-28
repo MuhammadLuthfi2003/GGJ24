@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public float interval = 10f;
     public float lifetime = 10f;
     private float t = 0;
+    
 
     // Start is called before the first frame update
     void Start()

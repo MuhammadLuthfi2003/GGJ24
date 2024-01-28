@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,11 +17,17 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
-            pauseAnimator.SetTrigger("Pause");
+            Pause();
         }
         Time.timeScale = (isPaused) ? 0 : 1;
     }
+
+    public void Pause()
+    {
+        isPaused = !isPaused;
+        pauseAnimator.SetTrigger("Pause");
+    }
+
     public void Win()
     {
         isPaused = !isPaused;

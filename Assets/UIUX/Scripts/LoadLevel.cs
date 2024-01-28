@@ -6,6 +6,11 @@ public class LevelLoader : MonoBehaviour
     // Function to load the specified level by name
     public void LoadLevel(string levelToLoad)
     {
+        if (levelToLoad == "MainMenu")
+        {
+            PauseManager.isPaused = false;
+            PauseManager.isPaused = true;
+        }
         SceneManager.LoadScene(levelToLoad);
     }
 }
