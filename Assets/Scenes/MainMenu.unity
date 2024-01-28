@@ -8082,9 +8082,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Team Credit
       objectReference: {fileID: 0}
+    - target: {fileID: 6846958104491639407, guid: 2a1a49dbe8008a141853eab9fc684454, type: 3}
+      propertyPath: m_text
+      value: 'Game Designer, 2D Artist
+
+        2D Artist
+
+        Programmer
+
+
+        Programmer,
+        Sound Engineer'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7322952452461220861, guid: 2a1a49dbe8008a141853eab9fc684454, type: 3}
+      propertyPath: m_text
+      value: 'as
+
+        as
+
+        as
+
+
+        as'
+      objectReference: {fileID: 0}
     - target: {fileID: 7322952452461220861, guid: 2a1a49dbe8008a141853eab9fc684454, type: 3}
       propertyPath: m_fontStyle
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8019330965975547984, guid: 2a1a49dbe8008a141853eab9fc684454, type: 3}
+      propertyPath: m_text
+      value: "Indra Bayu Pratama \nBagas Anugrah Neiriza \nMuhammad Luthfi Azzahra
+        Rammadhani \nAdib Nafisudin "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
